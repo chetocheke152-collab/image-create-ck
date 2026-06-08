@@ -1,0 +1,413 @@
+/* =========================
+   全体
+========================= */
+.image-tool{
+  position:relative;
+  overflow:hidden;
+
+  max-width:900px;
+  margin:0 auto;
+  padding:28px;
+
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+
+  border-radius:28px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 50%,
+    #8b5cf6 100%
+  );
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.18);
+
+  color:#fff;
+}
+
+.image-tool::before{
+  content:"";
+
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  right:-150px;
+  top:-150px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    rgba(255,255,255,.25),
+    transparent 70%
+  );
+
+  pointer-events:none;
+}
+
+/* =========================
+   タイトル
+========================= */
+
+.image-tool h2{
+  margin:0;
+
+  font-size:24px;
+  font-weight:700;
+
+  color:white;
+}
+
+/* =========================
+   ラベル
+========================= */
+
+.image-tool label{
+  display:block;
+  margin-bottom:8px;
+
+  font-size:13px;
+  font-weight:600;
+
+  color:rgba(255,255,255,.92);
+}
+
+/* =========================
+   入力欄
+========================= */
+
+.image-tool input,
+.image-tool select,
+.image-tool textarea{
+
+  width:100%;
+  box-sizing:border-box;
+
+  padding:14px 16px;
+
+  border:none;
+  border-radius:18px;
+
+  background:
+  rgba(255,255,255,.14);
+
+  backdrop-filter:blur(12px);
+
+  color:white;
+
+  transition:.25s ease;
+}
+
+.image-tool textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.image-tool input::placeholder,
+.image-tool textarea::placeholder{
+  color:rgba(255,255,255,.6);
+}
+
+.image-tool input:focus,
+.image-tool select:focus,
+.image-tool textarea:focus{
+
+  outline:none;
+
+  background:
+  rgba(255,255,255,.22);
+
+  box-shadow:
+  0 0 0 3px rgba(255,255,255,.15);
+}
+
+/* =========================
+   カラーパレット追加ボタン
+========================= */
+
+#addColorBtn{
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+#addColorBtn:hover{
+  transform:translateY(-2px);
+}
+
+/* =========================
+   カラーチップ
+========================= */
+
+#colorList > div{
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  background:
+  rgba(255,255,255,.16);
+
+  backdrop-filter:blur(10px);
+
+  border:
+  1px solid rgba(255,255,255,.15);
+
+  color:white;
+
+  font-size:12px;
+  font-weight:500;
+}
+
+#colorList button{
+  color:white !important;
+}
+
+/* =========================
+   プロンプト出力
+========================= */
+
+#promptOutput{
+  line-height:1.7;
+}
+
+.prompt-preview{
+
+  padding:20px;
+
+  border-radius:20px;
+
+  background:
+  rgba(255,255,255,.12);
+
+  backdrop-filter:blur(14px);
+
+  border:
+  1px solid rgba(255,255,255,.15);
+}
+
+/* =========================
+   ボタン
+========================= */
+
+#copyPromptBtn,
+#copyYAMLBtn{
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+#copyPromptBtn{
+
+  color:white;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+}
+
+#copyYAMLBtn{
+
+  color:white;
+
+  background:
+  linear-gradient(
+    135deg,
+    #ff9966,
+    #ff5e62
+  );
+}
+
+#copyPromptBtn:hover,
+#copyYAMLBtn:hover{
+
+  transform:
+  translateY(-3px);
+
+  box-shadow:
+  0 12px 24px rgba(0,0,0,.25);
+}
+
+/* =========================
+   情報ボックス
+========================= */
+
+.info-box{
+
+  padding:14px 16px;
+
+  border-radius:18px;
+
+  background:
+  rgba(255,255,255,.12);
+
+  backdrop-filter:blur(10px);
+
+  border:
+  1px solid rgba(255,255,255,.15);
+
+  color:white;
+}
+
+/* =========================
+   スクロールバー
+========================= */
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius:999px;
+  background:rgba(255,255,255,.3);
+}
+.image-tool select{
+  color:#ffffff;
+  background:rgba(255,255,255,.14);
+}
+
+.image-tool select option{
+  background:#ffffff;
+  color:#222222;
+}
+.color-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);
+
+  color:white;
+}
+
+.remove-color-btn{
+  border:none;
+  background:none;
+
+  color:white;
+
+  cursor:pointer;
+}
+#randomBtn{
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  font-size:14px;
+  font-weight:700;
+
+  color:white;
+
+  cursor:pointer;
+
+  background:
+  linear-gradient(
+    135deg,
+    #f093fb,
+    #f5576c
+  );
+
+  transition:.25s;
+}
+
+#randomBtn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 12px 24px rgba(0,0,0,.25);
+}
+.toggle-btn{
+
+  width:100%;
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:12px;
+
+  cursor:pointer;
+
+  background:
+  rgba(255,255,255,.15);
+
+  color:white;
+
+  font-weight:600;
+}
+
+.random-tools{
+
+  margin-top:10px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:10px;
+}
+
+.random-tools button{
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:12px;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:
+  rgba(255,255,255,.18);
+
+  backdrop-filter:blur(8px);
+}
+
+.hidden{
+  display:none;
+}
