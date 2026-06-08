@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画像生成ツール</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+
+<body>
+
+<div class="image-tool">
+  <div style="padding-bottom: 8px; border-bottom: 0.5px solid var(--color-border-tertiary);">
+    <h2 style="margin: 0; font-size: 18px; font-weight: 500; color: var(--color-text-primary);">
+      <i class="ti ti-sparkles" style="margin-right: 6px; font-size: 18px; vertical-align: -2px;" aria-hidden="true"></i>
+      画像生成ツール
+    </h2>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        何を作りたいですか？
+      </label>
+      <input type="text" id="titleInput" value="かわいい子猫" placeholder="例：かわいい猫、魔法の森" style="width: 100%; box-sizing: border-box;" />
+    </div>
+
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        スタイル
+      </label>
+      <select id="styleInput" style="width: 100%; box-sizing: border-box;">
+        <option value="デジタルイラスト">デジタルイラスト</option>
+        <option value="油絵">油絵</option>
+        <option value="水彩画">水彩画</option>
+        <option value="写真">写真</option>
+        <option value="3D CG">3D CG</option>
+        <option value="アニメ">アニメ</option>
+        <option value="漫画">漫画</option>
+        <option value="ファンタジー風景">ファンタジー風景</option>
+        <option value="サイバーパンク">サイバーパンク</option>
+        <option value="商品写真">商品写真</option>
+      </select>
+    </div>
+    <div>
+
+<div>
+  <label>
+    出力サイズ・用途
+  </label>
+
+  <select id="sizePresetInput">
+
+    <option value="1:1">
+      📷 Instagram投稿（1:1）
+    </option>
+
+    <option value="16:9">
+      🎬 YouTubeサムネイル（16:9）
+    </option>
+
+    <option value="9:16">
+      📱 iPhone壁紙（9:16）
+    </option>
+
+    <option value="9:16">
+      🎵 TikTok・リール（9:16）
+    </option>
+
+    <option value="19.5:9">
+      📱 iPhone 15 / 16 壁紙
+    </option>
+
+    <option value="16:9">
+      📱 iPhone SE3 壁紙
+    </option>
+
+    <option value="19.5:9">
+      📱 iPhone 12 / 13 / 14 壁紙
+    </option>
+
+    <option value="16:10">
+      💻 MacBook Retina
+    </option>
+
+    <option value="16:9">
+      🖥 FullHDモニター
+    </option>
+
+    <option value="16:9">
+      🖥 4Kモニター
+    </option>
+
+    <option value="4:3">
+      📱 iPad
+    </option>
+
+    <option value="3:4">
+      🖼 ポートレート写真
+    </option>
+
+  </select>
+</div>
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        ムード・雰囲気
+      </label>
+      <input type="text" id="moodInput" value="楽しげでかわいらしい" placeholder="例：楽しげ、神秘的、平和的" style="width: 100%; box-sizing: border-box;" />
+    </div>
+
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        カラーパレット <span id="colorCount" style="font-weight: 400;">(3)</span>
+      </label>
+      <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+        <input type="text" id="colorInput" placeholder="色を追加（最大5色）" style="flex: 1; box-sizing: border-box;" />
+        <button
+  type="button"
+  id="addColorBtn"
+  style="padding: 0 12px; min-width: 44px; cursor: pointer;">
+  <i class="ti ti-plus"></i>
+</button>
+          <i class="ti ti-plus" style="font-size: 14px;" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="colorList" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+    </div>
+
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        背景・舞台
+      </label>
+      <input type="text" id="settingInput" value="日当たりの良い部屋にオモチャ" placeholder="例：日当たりの良い部屋、古代神殿" style="width: 100%; box-sizing: border-box;" />
+    </div>
+
+    <div>
+      <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary);">
+        その他の詳細（オプション）
+      </label>
+      <textarea id="detailsInput" placeholder="照明、構図、その他の詳細を追加..." style="width: 100%; box-sizing: border-box; min-height: 80px; resize: vertical; padding: 8px; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); font-family: var(--font-sans); font-size: 13px;"></textarea>
+    </div>
+  </div>
+
+  <div class="prompt-preview">
+    <p style="margin: 0 0 8px 0; font-size: 12px; font-weight: 500; color: var(--color-text-secondary);">
+      生成されたプロンプト
+    </p>
+    <p id="promptOutput" style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-text-primary);"></p>
+  </div>
+
+<button id="randomBtn">
+  🎲 ランダム生成
+</button>
+
+<button id="toggleRandomTools" class="toggle-btn">
+  ▼ 個別ランダム
+</button>
+
+<div id="randomTools" class="random-tools hidden">
+
+  <button id="randomTitleBtn">
+    🎨 テーマ
+  </button>
+
+  <button id="randomMoodBtn">
+    ✨ 雰囲気
+  </button>
+
+  <button id="randomSettingBtn">
+    🌎 背景
+  </button>
+
+  <button id="randomColorBtn">
+    🎨 色
+  </button>
+
+</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+    <button id="copyPromptBtn" style="padding: 10px 12px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px;">
+      <i class="ti ti-copy" style="font-size: 14px;" aria-hidden="true"></i>
+      コピー
+    </button>
+    <button id="copyYAMLBtn" style="padding: 10px 12px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px;">
+      <i class="ti ti-file-code" style="font-size: 14px;" aria-hidden="true"></i>
+      YAML
+    </button>
+  </div>
+
+  <div class="info-box">
+    <p style="margin: 0; line-height: 1.4;">
+      <i class="ti ti-bulb" style="margin-right: 4px; vertical-align: -1px;" aria-hidden="true"></i>
+      生成されたプロンプトはDALL-E、Midjourney、Stable Diffusionで使用できます
+    </p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
