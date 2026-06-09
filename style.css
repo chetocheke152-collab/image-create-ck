@@ -411,3 +411,32 @@
 .hidden{
   display:none;
 }
+#infoToggleBtn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.info-text {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.9);
+}
+
+#infoChevron {
+  margin-left: auto;
+  transition: transform .25s;
+}
+
+#infoChevron.open {
+  transform: rotate(180deg);
+}
