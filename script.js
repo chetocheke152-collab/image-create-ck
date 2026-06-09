@@ -28,14 +28,12 @@ const randomThemes = [
   "宇宙を旅する少女",
   "魔法使い",
   "サイバーパンク都市",
-  "妖精",
+  "桜の妖精",
   "ドラゴン",
   "未来都市",
   "白い狼",
   "海底神殿",
-  "天空の城",
-  "子犬",
-  "ライオン",
+  "天空の城"
 ];
 
 const randomMoods = [
@@ -105,13 +103,21 @@ function randomSetting(){
   updatePrompt();
 }
 
-function randomColor(){
-
-  colors = [
-    randomItem(randomColors),
-    randomItem(randomColors),
-    randomItem(randomColors)
-  ];
+function randomColor() {
+  // 1〜5種類のどれかをランダムに選ぶ
+  const count = Math.floor(Math.random() * 5) + 1;
+  
+  colors = [];
+  for (let i = 0; i < count; i++) {
+    // 同じ色が連続しないよう候補から選ぶ
+    let candidate;
+    let tries = 0;
+    do {
+      candidate = randomItem(randomColors);
+      tries++;
+    } while (colors.includes(candidate) && tries < 10);
+    colors.push(candidate);
+  }
 
   updateColorDisplay();
   updatePrompt();
@@ -293,3 +299,14 @@ const opened =! randomTools.classList.contains('hidden');
 toggleRandomTools.textContent = opened? '▲ 個別ランダム': '▼ 個別ランダム';});
 updateColorDisplay();
 updatePrompt();
+
+const infoToggleBtn = document.getElementById('infoToggleBtn');
+const infoText = document.getElementById('infoText');
+const infoChevron = document.getElementById('infoChevron');
+const infoLabel = document.getElementById('infoLabel');
+
+infoToggleBtn.addEventListener('click', () => {
+  const isOpen = infoText.classList.toggle('hidden') === false;
+  infoChevron.classList.toggle('open', isOpen);
+  infoLabel.textContent = isOpen ? '閉じる' : '推奨環境';
+});
